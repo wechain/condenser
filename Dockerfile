@@ -1,4 +1,4 @@
-FROM node:8-alpine
+FROM node:8
 
 ARG SOURCE_COMMIT
 ENV SOURCE_COMMIT ${SOURCE_COMMIT}
@@ -8,7 +8,6 @@ ENV DOCKER_TAG ${DOCKER_TAG}
 # yarn > npm
 #RUN npm install --global yarn
 
-RUN apk add --no-cache bash
 RUN npm install -g yarn
 
 WORKDIR /var/app
