@@ -72,7 +72,7 @@ docker run -d \
 	jrcs/letsencrypt-nginx-proxy-companion    
 
 docker run -d --name steemit \
-    --expose 80 \
+    --expose 8080 \
     -e "VIRTUAL_HOST=steem.racing" \
     -e "LETSENCRYPT_HOST=steem.racing" \
     -e "LETSENCRYPT_EMAIL=anybucket@outlook.com" \
