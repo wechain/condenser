@@ -55,9 +55,28 @@ docker run -it -p 8080:8080 myname/condenser:mybranch
 #### Clone the repository and make a tmp folder
 
 ```bash
-git clone https://github.com/steemit/condenser
-cd condenser
-mkdir tmp
+docker run -d -p 80:80 -p 443:443 \
+    --name nginx-proxy \
+    -v /var/nginx/certs:/etc/nginx/certs:ro \
+    -v /etc/nginx/vhost.d \
+    -v /usr/share/nginx/html \
+    -v /var/run/docker.sock:/tmp/docker.sock:ro \
+    --label com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy \
+    jwilder/nginx-proxy
+    
+docker run -d \
+	--name lets-encrypt \
+	-v /var/nginx/certs:/etc/nginx/certs:rw \
+	-v /var/run/docker.sock:/var/run/docker.sock:ro \
+	--volumes-from nginx-proxy \
+	jrcs/letsencrypt-nginx-proxy-companion    
+
+docker run -d --name steemit \
+    --expose 80 \
+    -e "VIRTUAL_HOST=steem.racing" \
+    -e "LETSENCRYPT_HOST=steem.racing" \
+    -e "LETSENCRYPT_EMAIL=anybucket@outlook.com" \
+    steemit-racing/steemit
 ```
 
 #### Install dependencies
