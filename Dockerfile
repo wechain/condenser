@@ -8,6 +8,7 @@ ENV DOCKER_TAG ${DOCKER_TAG}
 # yarn > npm
 #RUN npm install --global yarn
 
+RUN apk add --no-cache bash
 RUN npm install -g yarn
 
 WORKDIR /var/app
