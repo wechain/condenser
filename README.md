@@ -76,8 +76,7 @@ docker run -d --name steemit \
     -e "VIRTUAL_HOST=steem.racing" \
     -e "LETSENCRYPT_HOST=steem.racing" \
     -e "LETSENCRYPT_EMAIL=anybucket@outlook.com" \
-    -e SDC_IMAGE_PROXY_PREFIX="https://steemitimages.com/" \
-    
+    -e SDC_IMAGE_PROXY_PREFIX="https://steemitimages.com/" \   
     steemit-racing/steemit
 ```
 
