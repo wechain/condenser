@@ -71,13 +71,24 @@ docker run -d \
 	--volumes-from nginx-proxy \
 	jrcs/letsencrypt-nginx-proxy-companion    
 
+docker run -d \
+    --name steemit-mysql \
+    -e "MYSQL_DATABASE=steemracing" \
+    -e "MYSQL_ROOT_PASSWORD=password" \
+    mysql:5.7
+
 docker run -d --name steemit \
     --expose 8080 \
     -e "VIRTUAL_HOST=steem.racing" \
     -e "LETSENCRYPT_HOST=steem.racing" \
     -e "LETSENCRYPT_EMAIL=anybucket@outlook.com" \
-    -e SDC_IMAGE_PROXY_PREFIX="https://steemitimages.com/" \   
+    --link steemit-mysql:mysql \
+    -e "DB_NAME=steemracing" \
+    -e "DB_PASSWORD=password" \
     steemit-racing/steemit
+    
+
+
 ```
 
 #### Install dependencies
