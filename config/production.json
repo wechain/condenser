@@ -51,10 +51,10 @@
       "waiting_list_invite": false
     }
   },
-  "server_session_secret": "exiKdyF+IwRIXJDmtGIl4vWUz4i3eVSISpfZoeYc0s4=",
-  "session_cookie_key": "stm-dev",
+  "server_session_secret": "DTRzXkLbOrrKplMl0+oIRM3+qCvBYQXXna3ycQ5F48c=",
+  "session_cookie_key": "str",
   "session_key": "steemses",
-  "site_domain": "steemitdev.com",
+  "site_domain": "steem.racing",
   "tarantool": {
     "host": "localhost",
     "password": "",
