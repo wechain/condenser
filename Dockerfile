@@ -1,4 +1,4 @@
-FROM node:8.7-alpine
+FROM node:10-alpine
 
 ARG SOURCE_COMMIT
 ENV SOURCE_COMMIT ${SOURCE_COMMIT}
@@ -6,8 +6,9 @@ ARG DOCKER_TAG
 ENV DOCKER_TAG ${DOCKER_TAG}
 
 # yarn > npm
-RUN apk add --no-cache git
+RUN apk add --no-cache git nano
 
+RUN npm i -g npm@latest
 RUN npm install -g yarn
 
 WORKDIR /var/app
