@@ -76,6 +76,8 @@ docker run -d \
     -e "MYSQL_DATABASE=steemracing" \
     -e "MYSQL_ROOT_PASSWORD=password" \
     mysql:5.7
+    
+docker run --name=mysql --network=steem-network -d mysql/mysql-server   
 
 docker run -d --name steemit \
     --expose 8080 \
